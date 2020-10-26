@@ -1,0 +1,8 @@
+{
+  "DATABASE_URL": "",
+  "FLASK_URL": "",
+  "MQTT_USER": "",
+  "MQTT_PASSWORD": "",
+  "MQTT_HOST": "",
+  "MQTT_TOPICS": []
+}
