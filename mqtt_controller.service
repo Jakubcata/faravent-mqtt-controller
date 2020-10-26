@@ -4,8 +4,8 @@ After=mysql.service
 
 [Service]
 User=ubuntu
-ExecStart=/home/ubuntu/FaraVent/mqtt_controller/run.sh
-WorkingDirectory=/home/ubuntu/FaraVent/mqtt_controller/
+ExecStart=/home/ubuntu/faravent-mqtt-controller/run.sh
+WorkingDirectory=/home/ubuntu/faravent-mqtt-controller/
 KillSignal=SIGKILL
 Restart=on-abort
 Type=simple
