@@ -1,0 +1,20 @@
+[Unit]
+Description=Worker for analyzing images
+After=mysql.service
+
+[Service]
+User=ubuntu
+ExecStart=/home/ubuntu/FaraVent/mqtt_controller/run.sh
+WorkingDirectory=/home/ubuntu/FaraVent/mqtt_controller/
+KillSignal=SIGKILL
+Restart=on-abort
+Type=simple
+TimeoutStartSec=1
+TimeoutStopSec=1
+StandardOutput=syslog
+StandardError=syslog
+NotifyAccess=all
+SyslogIdentifier=mqtt_controller
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+[pydocstyle]
+# D100-D107 ignore missing docstrings
+# D203 disabled in favor of D211
+# D213 disabled in favor of D212
+# D416 Version 4.0.0 added support for Google convention and thus new violations that must be ignored based on the convention
+ignore = D100,D101,D102,D103,D104,D105,D106,D107,D203,D213,D416,D401,D407,D413,D202,D405,

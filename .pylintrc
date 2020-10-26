@@ -1,0 +1,36 @@
+[MASTER]
+# jobs=0 means 'use all CPUs'
+jobs=0
+
+[MESSAGES CONTROL]
+disable =
+  missing-docstring,
+  line-too-long,
+  no-member,
+  relative-import,
+  wrong-import-position,
+  locally-disabled,
+  abstract-method,
+  no-self-use,
+  fixme,
+  too-few-public-methods,
+  ungrouped-imports,
+  bad-continuation,
+  invalid-name,
+  broad-except,
+  too-many-arguments,
+  too-many-locals,
+  too-many-instance-attributes,
+  too-many-branches,
+  no-else-return,
+  too-many-public-methods,
+  no-name-in-module,
+
+
+[REPORTS]
+output-format=colorized
+
+[FORMAT]
+logging-modules=
+  logging,
+  structlog,

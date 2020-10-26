@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: mqtt-controller
+Version: 0.0.0
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Michal Korbela
+Author-email: kabell999@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Private :: Do Not Upload
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only

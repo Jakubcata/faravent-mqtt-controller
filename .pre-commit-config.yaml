@@ -1,0 +1,84 @@
+default_language_version:
+  python: python3.7
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^.*\.md$
+      - id: end-of-file-fixer
+      - id: debug-statements
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: detect-private-key
+      - id: detect-aws-credentials
+        args: [--allow-missing-credentials]
+      - id: check-merge-conflict
+
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: v0.12.0
+    hooks:
+      - id: gitlint
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.17.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.18.0
+    hooks:
+      - id: markdownlint
+        language_version: system
+
+  - repo: https://github.com/asottile/seed-isort-config
+    rev: v1.9.2
+    hooks:
+      - id: seed-isort-config
+
+  - repo: https://github.com/timothycrosley/isort
+    rev: 4.3.21
+    hooks:
+      - id: isort
+        # extra dependencies for config in pyproject.toml
+        additional_dependencies: ["isort[pyproject]"]
+
+  - repo: https://github.com/ambv/black
+    rev: 19.3b0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/pre-commit/mirrors-pylint
+    rev: v2.3.1
+    hooks:
+      - id: pylint
+        exclude: ^(.*/migrations/|.*snapshots/).*$
+        # disabled import-error as may be run out of environment with deps
+        args: ["--disable=import-error"]
+
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 4.0.1
+    hooks:
+      - id: pydocstyle
+        files: ^(?!.*migrations|.*tests).*$
+
+  - repo: https://github.com/codingjoe/relint
+    rev: 1.1.0
+    hooks:
+      - id: relint
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v0.780
+    hooks:
+      - id: mypy
+        args: [
+          --config-file=mypy.ini,
+          --no-incremental,
+          --warn-unused-configs,
+          --no-strict-optional,
+          --ignore-missing-imports
+        ]
+
+        # These folders slow down mypy, so it takes 10x more time.
+        exclude: ^.*(example).*$
