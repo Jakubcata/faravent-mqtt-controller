@@ -1,5 +1,5 @@
 import enum
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional
 
 import pandas as pd
@@ -47,3 +47,48 @@ class Stats:
             frame = getattr(frame.resample(resample), resample_func.value)()
 
         return frame
+
+    def is_movement(
+        self,
+        device_id: int,
+        interval: Optional[timedelta] = None,
+        threshold: float = 0.05,
+    ) -> bool:
+        interval = interval or timedelta(minutes=5)
+        frame = self.load_data(
+            device_id,
+            "movement",
+            datetime.now() - interval,
+            datetime.now(),
+            "2S",
+            StatsResampleFunc.Max,
+        )
+        return frame.mean(axis=0)["movement"] >= threshold
+
+    def get_humidity(
+        self, device_id: int, interval: Optional[timedelta] = None
+    ) -> float:
+        interval = interval or timedelta(minutes=5)
+        frame = self.load_data(
+            device_id,
+            "humidity",
+            datetime.now() - interval,
+            datetime.now(),
+            "2S",
+            StatsResampleFunc.Mean,
+        )
+        return frame.mean(axis=0)["humidity"]
+
+    def get_temperature(
+        self, device_id: int, interval: Optional[timedelta] = None
+    ) -> float:
+        interval = interval or timedelta(minutes=5)
+        frame = self.load_data(
+            device_id,
+            "temperature",
+            datetime.now() - interval,
+            datetime.now(),
+            "2S",
+            StatsResampleFunc.Mean,
+        )
+        return frame.mean(axis=0)["temperature"]
